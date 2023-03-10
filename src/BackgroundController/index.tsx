@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 interface BackgroundControllerProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 const BackgroundContainer = styled.div<{ selectedColorhex: string, selectedColorsec: string }>`
   background-color: ${(props) => props.selectedColorhex};
   position: absolute;
+  width : 100vw;
+  height : 100vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -52,17 +54,17 @@ const RectangleThree = styled.div<{ selectedColorhex: string, selectedColorsec: 
 
 const BackgroundController = ({ children }: BackgroundControllerProps) => {
 
-    const selectedColor = useSelector((state: RootState) => state.app.selectedColor);
-    console.log(selectedColor);
-    return (
-        <>
-            <BackgroundContainer selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} />
-            <RectangleOne selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} ></RectangleOne>
-            <RectangleTwo selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} ></RectangleTwo>
-            <RectangleThree selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec}  ></RectangleThree >
-            {children}
-        </ >
-    );
+  const selectedColor = useSelector((state: RootState) => state.app.selectedColor);
+  console.log(selectedColor);
+  return (
+    <>
+      <BackgroundContainer selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} />
+      <RectangleOne selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} ></RectangleOne>
+      <RectangleTwo selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec} ></RectangleTwo>
+      <RectangleThree selectedColorhex={selectedColor.hex} selectedColorsec={selectedColor.sec}  ></RectangleThree >
+      {children}
+    </ >
+  );
 };
 
 export default BackgroundController;

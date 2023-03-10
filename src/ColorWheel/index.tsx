@@ -14,13 +14,13 @@ export type Color = {
 }
 
 const colors: Color[] = [
-    { id: 1, name: 'Amazonite', hex: '#9c4037', sec:'#e0a18a', locked: false },
-    { id: 2, name: 'Amber', hex: '#da4900', sec:'#ff7c35', locked: true },
-    { id: 3, name: 'Amethyst', hex: '#462f99', sec:'#b1a8d7', locked: false },
-    { id: 4, name: 'Calcite', hex: '#829292', sec:'#e8eeec', locked: false },
-    { id: 5, name: 'Clorophyll', hex: '#736d6f', sec:'#d4d9d3', locked: false },
-    { id: 6, name: 'corundum', hex: '#acd18e', sec:'#f8faec', locked: false },
-    { id: 7, name: 'Latte', hex: '#937551', sec:'#e5ddd0', locked: false },
+    { id: 1, name: 'Amazonite', hex: '#9c4037', sec: '#e0a18a', locked: false },
+    { id: 2, name: 'Amber', hex: '#da4900', sec: '#ff7c35', locked: true },
+    { id: 3, name: 'Amethyst', hex: '#462f99', sec: '#b1a8d7', locked: false },
+    { id: 4, name: 'Calcite', hex: '#829292', sec: '#e8eeec', locked: false },
+    { id: 5, name: 'Clorophyll', hex: '#736d6f', sec: '#d4d9d3', locked: false },
+    { id: 6, name: 'corundum', hex: '#acd18e', sec: '#f8faec', locked: false },
+    { id: 7, name: 'Latte', hex: '#937551', sec: '#e5ddd0', locked: false },
 ];
 
 type ColorDivProps = {
@@ -30,8 +30,8 @@ type ColorDivProps = {
 }
 
 type ColorWheelProps = {
-  colors: Color[];
-  onColorSelect: (color: Color) => void;
+    colors: Color[];
+    onColorSelect: (color: Color) => void;
 }
 
 
@@ -58,6 +58,8 @@ const ColorContainer = styled.div<{ hex: string; locked: boolean }>`
   width: 100px;
   height: 100px;
   margin: 10px;
+  border : 2px solid #fff;
+  border-radius : 16px;
   cursor: ${props => props.locked ? 'default' : 'pointer'};
   display: flex;
   justify-content: center;
@@ -109,13 +111,20 @@ const ColorWheel = () => {
 
     return (
         <>
+            <WheelContainer>
+                {colors.map(color => (
+                    <ColorDiv key={color.id} color={color} onSelect={selectColor} onToggleLock={toggleLock} />
+                ))}
+            </WheelContainer>
 
-            <h2>All Colors</h2>
-            {colors.map(color => (
-                <ColorDiv key={color.id} color={color} onSelect={selectColor} onToggleLock={toggleLock} />
-            ))}
         </>
     );
 }
 
 export default ColorWheel;
+
+const WheelContainer = styled.div`
+display : flex;
+align-items : center;
+
+`
