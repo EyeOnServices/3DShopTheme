@@ -94,10 +94,8 @@ align-items : center;
 `
 
 const ModelContainer = styled.div`
-  width: 630px;
-  height: 630px;
-  display : flex;
-  align-items : center;
-  position : absolute;
-
+display : flex;
+flex-direction : column;
+align-items : center;
+ 
   `

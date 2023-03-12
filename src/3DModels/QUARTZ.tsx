@@ -9,6 +9,8 @@ import { useGLTF } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/store';
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -46,12 +48,17 @@ type GLTFResult = GLTF & {
 export function Model(props: JSX.IntrinsicElements['group']) {
 
   const selectedColor = useSelector((state: RootState) => state.app.selectedColor);
-  console.log(selectedColor);
 
+  const gltf = useLoader(GLTFLoader, '/Model/QUARTZ.glb');
+
+  console.log(selectedColor);
+  const center = new THREE.Vector3();
+  const box = new THREE.Box3().setFromObject(gltf.scene);
+  box.getCenter(center);
 
   const { nodes, materials } = useGLTF('/Model/QUARTZ.glb') as GLTFResult
   return (
-    <group {...props} dispose={null} scale={17}>
+    <group {...props} dispose={null} scale={35} position={[0,-3,0]}>
       <mesh geometry={nodes.SOLE_02.geometry} material={materials['002']} position={[0.02, 0.01, -0.01]} rotation={[Math.PI, 0.46, 3.14]} scale={1.55} >
         <meshStandardMaterial color={selectedColor.hex} />
       </mesh>
