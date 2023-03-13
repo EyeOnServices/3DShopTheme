@@ -24,23 +24,17 @@ const ProductModel = () => {
 
     return (
         <>
-
-
-
             {/* <ProductModelView src={shoe1} /> */}
-            <Canvas style={{ width: '700px', height: '700px', marginTop: '20px', alignItems: 'center' }} >
+            <Canvas style={{ width: '800px', height: '740px', zIndex: '2', alignItems: 'center' }} >
                 <ambientLight />
                 <pointLight position={[2, 2, 5]} />
                 <pointLight position={[-3, -3, 2]} />
                 <Controls />
-                <Model rotation={[0, Math.PI/2, 0]} />
-                {/* <Float speed={1.2} rotationIntensity={1.3} floatIntensity={1.5} position={[0, 0, 0]}>
-                       
-                    </Float> */}
-                {/* <ContactShadows position={[0, -0.3, 0]} blur={2.5} scale={10} far={1} /> */}
+                <Float speed={1.2} rotationIntensity={1.3} floatIntensity={1.5} position={[0, 0, 0]}>
+                    <Model rotation={[0, Math.PI / 1.5, 0]} />
+                </Float>
+                <ContactShadows position={[0, -3, 0]} blur={2.5} scale={10} far={3} />
             </Canvas>
-
-
             {/* <Canvas dpr={[1, 2]} shadows style={{ width: '700px', height: '700px', marginTop: '20px', alignItems: 'center' }}>
                 <fog attach="fog" args={['#101010', 0, 10]} />
                 <Environment preset="city" />
@@ -92,8 +86,6 @@ const ProductModelView = styled.img`
 const Container = styled.div`
   position : absolute;
   display: flex;
-
-  margin-top : 200px;
 `;
 
 export default ProductModel;

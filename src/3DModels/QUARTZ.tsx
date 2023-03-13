@@ -58,7 +58,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
 
   const { nodes, materials } = useGLTF('/Model/QUARTZ.glb') as GLTFResult
   return (
-    <group {...props} dispose={null} scale={35} position={[0,-3,0]}>
+    <group {...props} dispose={null} scale={40} position={[-1,-3,0]}>
       <mesh geometry={nodes.SOLE_02.geometry} material={materials['002']} position={[0.02, 0.01, -0.01]} rotation={[Math.PI, 0.46, 3.14]} scale={1.55} >
         <meshStandardMaterial color={selectedColor.hex} />
       </mesh>
@@ -87,7 +87,7 @@ export function Model(props: JSX.IntrinsicElements['group']) {
           <meshStandardMaterial color={selectedColor.hex} />
         </mesh>
         <mesh geometry={nodes.Plane011_2.geometry} material={materials['002']} />
-      </group>
+      </group>hn
       <mesh geometry={nodes.SOLE_01004.geometry} material={materials['002']} position={[0.02, 0.01, -0.01]} rotation={[Math.PI, 0.46, 3.14]} scale={1.55} >
         <meshStandardMaterial color={selectedColor.hex} />
       </mesh>
